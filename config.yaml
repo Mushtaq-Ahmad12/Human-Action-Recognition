@@ -1,0 +1,23 @@
+data:
+  raw_path: "data/raw/"
+  processed_path: "data/processed/"
+  dataset_url: "https://www.crcv.ucf.edu/data/UCF101/UCF101.rar"
+  subset_classes: ["ApplyEyeMakeup", "ApplyLipstick", "Archery", "BabyCrawling", "BalanceBeam"]
+  frames_per_video: 30 # Increased frames for deeper temporal access
+  image_size: 128
+
+model:
+  name: "CNN_RNN"
+  num_classes: 5
+  hidden_size: 256
+  num_layers: 2 # Double RNN depth
+  bidirectional: true 
+  dropout: 0.4
+
+training:
+  batch_size: 8
+  epochs: 20
+  learning_rate: 0.0001
+  model_save_path: "models/best_model.pth"
+  device: "cuda"
+  patience: 5 # For early stopping
